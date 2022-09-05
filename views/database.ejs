@@ -7,11 +7,22 @@
   <title>Database Interface</title>
 </head>
 <body>
-  <form action="/database" method="POST">
-    <label>Search
-      <input type="text" name="searchKey" value="<%= locals.searchKey %>" />
-    </label>
-    <button type="submit">Search</button>
-  </form>
+  <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; flex-direction: row;">
+      <div style="width: 100px; border: 10px; border-color: black; margin: 2px;">Search Word </div>
+      <div style="width: auto; border: 10px; border-color: black; margin: 2px;">Results Url</div>
+      </div>
+      <% searches.forEach(search => { %> 
+      <div style="display: flex; flex-direction: row;">
+        <div style="width: 100px; border: 10px; border-color: black; margin: 2px;"><%= search.searchKey %>  </div> 
+        <div style="width: auto; border: 10px; border-color: black; margin: 2px;">
+          <% search.resultsUrl.split(",").forEach(link => { %> 
+          <div><a href="<%= link %> "><%= link %></a> 
+          </div>
+          <% }) %> 
+        </div>
+      </div>
+      <% }) %>
+  </div>
 </body>
 </html>

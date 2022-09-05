@@ -39,8 +39,9 @@ router.get(`/results`, async function (req, res) {
         
         let urlresult = [];
         for (let i =0; i<response.data.length; i++){
-            urlresult += response.data[i].url + " ";
-            
+            urlresult += response.data[i].url +"," ;
+			
+            // urlresult +='"id"'+":"+i+'"link"'+":"+'"'+response.data[i].url + '"';
         }
         res.send(urlresult)
         await db.storeRsults(req.query.q,urlresult);
